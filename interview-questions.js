@@ -74,8 +74,27 @@ const removeCharacters = (str, toBeRemoved) => {
 const products = arr => {
   return arr.map((num, idx) => {
     let product = 1;
-    
+    const filteredArr = arr.filter((innerN, innerI) => innerI === idx ? false : true);
+    filteredArr.forEach(fN => product *= fN);
     return product;
   });
 };
-products([1, 3, 9, 4]);
+// console.log(products([1, 3, 9, 4]));
+
+// 2D array
+const twoDArray = arr => {
+  const newArr = [...arr];
+  arr.forEach((innerArr, idx) => {
+    innerArr.forEach((num, innerIdx) => {
+      if (num === 0) {
+        newArr[idx].forEach((oldNum, i) => newArr[idx][i] = 0);
+        arr.forEach((a, i) => newArr[i][innerIdx] = 0);
+      }
+    });
+  });
+  return newArr;
+};
+
+const twoDArrayInput = [[1, 0, 1, 1, 0], [0, 1, 1, 1, 0], [1, 1, 1, 1, 1], [1, 0, 1, 1, 1], [1, 1, 1, 1, 1]];
+
+console.log(twoDArray(twoDArrayInput));
