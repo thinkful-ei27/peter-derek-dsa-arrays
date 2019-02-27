@@ -83,11 +83,15 @@ const products = arr => {
 
 // 2D array
 const twoDArray = arr => {
-  const newArr = [...arr];
+  let newArr = [];
+  arr.map((a, i) => newArr[i] = [...a]);
+  
   arr.forEach((innerArr, idx) => {
     innerArr.forEach((num, innerIdx) => {
+      // console.log(arr[idx]);
       if (num === 0) {
-        newArr[idx].forEach((oldNum, i) => newArr[idx][i] = 0);
+        
+        arr[idx].forEach((oldNum, i) => newArr[idx][i] = 0);
         arr.forEach((a, i) => newArr[i][innerIdx] = 0);
       }
     });
@@ -97,4 +101,28 @@ const twoDArray = arr => {
 
 const twoDArrayInput = [[1, 0, 1, 1, 0], [0, 1, 1, 1, 0], [1, 1, 1, 1, 1], [1, 0, 1, 1, 1], [1, 1, 1, 1, 1]];
 
-console.log(twoDArray(twoDArrayInput));
+// console.log(twoDArray(twoDArrayInput));
+
+// String Rotation
+
+const rotateString = (str1, str2, idx) => {
+  const rotatedStr = str1.substring(idx) + str1.substring(0, idx);
+  
+  return rotatedStr === str2;
+}; 
+
+const stringRotation = (str1, str2) => {
+  if (str1 === str2) {
+    return true;
+  }
+  
+  for (let i = 0; i < str1.length; i++) {
+    if (rotateString(str1, str2, i)) return true;
+  
+  }
+
+  return false;
+};
+
+// console.log(stringRotation('amazon', 'azonma'));
+// console.log(stringRotation('amazon', 'azonam'));
