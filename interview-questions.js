@@ -38,3 +38,44 @@ const mergeArrays = (arr1, arr2) => {
 };
 
 // console.log(mergeArrays([1, 3, 6, 8, 11], [2, 3, 5, 8, 9, 10]));
+
+const removeCharacters = (str, toBeRemoved) => {
+  const strArr = [];
+  const toBeRemovedArr = [];
+  let result = '';
+
+  // Convert `str` to array
+  for (let i = 0; i < str.length; i++) {
+    strArr.push(str[i]);
+  }
+
+  // Convert `toBeRemoved` to array
+  for (let i = 0; i < toBeRemoved.length; i++) {
+    toBeRemovedArr.push(toBeRemoved[i]);
+  }
+
+  // It compares all the the elements in strArr to toBeRemovedArr and if there is a match
+  // it replaces the character at that index with an empty string. We then build up the results 
+  // string with the characters that don't match
+  for (let i = 0; i < strArr.length; i++) {
+    for (let j = 0; j < toBeRemovedArr.length; j++) {
+      if (strArr[i] === toBeRemovedArr[j]) {
+        strArr[i] = '';
+      }
+    }
+    result += strArr[i];
+  }
+  return result;
+
+};
+
+// console.log(removeCharacters('Battle of the Vowels: Hawaii vs. Grozny', 'aeiou'));
+
+const products = arr => {
+  return arr.map((num, idx) => {
+    let product = 1;
+    
+    return product;
+  });
+};
+products([1, 3, 9, 4]);
